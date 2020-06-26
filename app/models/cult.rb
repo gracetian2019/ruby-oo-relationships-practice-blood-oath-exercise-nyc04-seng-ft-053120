@@ -42,14 +42,15 @@ class Cult
        x = Cult.all.sort_by{|cult|cult.cult_population}
         return x[0]  
     end
-    # def self.most_common_location
-    #     y = {}
-    #     self.all.each do |cult|
-    #         if y[cult.location]
-    #           y[cult.location] +=1
-    #         else  
-    #           y[cult.location] = 1
-    #         end
-    #     end
-    # end
+    def self.most_common_location
+        y = {}
+        self.all.each do |cult|
+            if y[cult.location]
+              y[cult.location] +=1
+            else  
+              y[cult.location] = 1
+            end
+        end
+        y.sort_by{|key,value|value}.last[0]
+    end
 end
